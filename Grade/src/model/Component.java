@@ -1,6 +1,6 @@
 package model;
 
-import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -11,9 +11,10 @@ public class Component {
 	private final IntegerProperty componentguk;
 	private final IntegerProperty componenteng;
 	private final IntegerProperty componentmath;
+	private final IntegerProperty componentsci;
 	private final IntegerProperty componenttotal;
-	private final IntegerProperty componentavg;
-	private final IntegerProperty componentrank;
+	private final DoubleProperty componentavg;
+	private final StringProperty componentrank;
 	
 	public String getComponentName() {
 		return componentName.get();
@@ -52,6 +53,16 @@ public class Component {
 		this.componentmath.set(componentmath);
 	}
 	
+	public int getComponentsci() {
+		return componentsci.get();
+	}
+
+
+	public void setComponentsci(int componentsci) {
+		this.componentsci.set(componentsci);
+	}
+	
+	
 	
 	public int getComponenttotal() {
 		return componenttotal.get();
@@ -59,28 +70,39 @@ public class Component {
 	
 	
 	public void setComponenttotal() {
-		this.componenttotal.set(componenteng.get()+componentguk.get()+componentmath.get());
+		this.componenttotal.set(componenteng.get()+componentguk.get()+componentmath.get()+componentsci.get());
 	}
 	
 	
-	public int getComponentavg() {
+	public double getComponentavg() {
 		return componentavg.get();
 	}
 	
 	
 	public void setComponentavg() {
-		this.componentavg.set(componenttotal.get()/3);
+		this.componentavg.set(componenttotal.get()/4);
 	}
 	
 	
-	public int getComponentrank() {
+	public String getComponentrank() {
 		return componentrank.get();
 	}
 	
 	
 	public void setComponentrank() {
 		//this.componentrank.set(componentrank);
-		this.componentrank.set(1);
+		int num = (int)componentavg.get()/10;
+		
+		String rk;
+		switch(num) {
+		case 10:
+		case 9: rk = "A"; break;
+		case 8: rk = "B"; break; 
+		case 7: rk = "C"; break; 
+		case 6: rk = "D"; break; 
+		default: rk = "E"; 
+		}
+		this.componentrank.set(rk);
 	}
 	
 
@@ -107,24 +129,25 @@ public class Component {
 	}
 	
 	
-	public IntegerProperty comavgProperty() {
+	public DoubleProperty comavgProperty() {
 		return componentavg;
 	}
 	
 	
-	public IntegerProperty comrankProperty() {
+	public StringProperty comrankProperty() {
 		return componentrank;
 	}
 	
 	public Component(String componentName, Integer componentguk, Integer componenteng,
-			Integer componentmath, Integer componenttotal, Integer componentavg, Integer componentrank) {
+			Integer componentmath,Integer componentsci, Integer componenttotal, Double componentavg, String componentrank) {
 		this.componentName = new SimpleStringProperty(componentName);
 		this.componentguk = new SimpleIntegerProperty(componentguk);
 		this.componenteng = new SimpleIntegerProperty(componenteng);
 		this.componentmath = new SimpleIntegerProperty(componentmath);
+		this.componentsci = new SimpleIntegerProperty(componentsci);
 		this.componenttotal = new SimpleIntegerProperty(componenttotal);
-		this.componentavg = new SimpleIntegerProperty(componentavg);
-		this.componentrank = new SimpleIntegerProperty(componentrank);
+		this.componentavg = new SimpleDoubleProperty(componentavg);
+		this.componentrank = new SimpleStringProperty(componentrank);
 	}
 	
 	

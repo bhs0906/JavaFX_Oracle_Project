@@ -17,14 +17,15 @@ import model.Component;
 public class ComMainController implements Initializable{
 	
 	@FXML private TableView<Component> componentTable;
-	@FXML private TableColumn<Component, String> ComName;/* = new TableColumn<Component, String>("ë¶€í’ˆì´ë¦„");*/
-	@FXML private TableColumn<Component, Integer> Comguk; /*= new TableColumn<Component, Integer>("êµ­ì–´");*/
-	@FXML private TableColumn<Component, Integer> ComPlace; /* = new TableColumn<Component, String>("ìœ„ì¹˜"); */
-	@FXML private TableColumn<Component, Integer> Comeng; /* = new TableColumn<Component, String>("ì˜ì–´"); */ 
-	@FXML private TableColumn<Component, Integer> Commath; /* = new TableColumn<Component, String>("ìˆ˜í•™"); */ 
-	@FXML private TableColumn<Component, Integer> Comtotal; /* = new TableColumn<Component, String>("í•©ê³„"); */ 
-	@FXML private TableColumn<Component, Integer> Comavg; /* = new TableColumn<Component, String>("í‰ê· "); */ 
-	@FXML private TableColumn<Component, Integer> Comrank; /* = new TableColumn<Component, String>("ë­í‚¹"); */ 
+	@FXML private TableColumn<Component, String> ComName;/* = new TableColumn<Component, String>("ºÎÇ°ÀÌ¸§");*/
+	@FXML private TableColumn<Component, Integer> Comguk; /*= new TableColumn<Component, Integer>("±¹¾î");*/
+	@FXML private TableColumn<Component, Integer> ComPlace; /* = new TableColumn<Component, String>("À§Ä¡"); */
+	@FXML private TableColumn<Component, Integer> Comeng; /* = new TableColumn<Component, String>("¿µ¾î"); */ 
+	@FXML private TableColumn<Component, Integer> Commath; /* = new TableColumn<Component, String>("¼öÇĞ"); */ 
+	@FXML private TableColumn<Component, Integer> Comsci; /* = new TableColumn<Component, String>("°úÇĞ"); */ 
+	@FXML private TableColumn<Component, Integer> Comtotal; /* = new TableColumn<Component, String>("ÇÕ°è"); */ 
+	@FXML private TableColumn<Component, Integer> Comavg; /* = new TableColumn<Component, String>("Æò±Õ"); */ 
+	@FXML private TableColumn<Component, Integer> Comrank; /* = new TableColumn<Component, String>("·©Å·"); */ 
 	
 	private Main mainapp;
 	private Stage PrimaryStage;
@@ -49,6 +50,7 @@ public class ComMainController implements Initializable{
 		Comguk.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componentguk"));
 		Comeng.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componenteng"));
 		Commath.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componentmath"));
+		Comsci.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componentsci"));		
 		Comtotal.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componenttotal"));
 		Comavg.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componentavg"));
 		Comrank.setCellValueFactory(new PropertyValueFactory<Component, Integer>("componentrank"));
@@ -63,7 +65,7 @@ public class ComMainController implements Initializable{
 	}
 	@FXML
 	private void addAction() {
-		Component component = new Component("", 0, 0, 0, 0, 0, 0);
+		Component component = new Component("", 0, 0, 0, 0, 0, 0.0, "");
 		int returnValue = mainapp.setComponentDataView(component);
 		if ( returnValue == 1) {
 			mainapp.getComponentList().add(component);
@@ -78,9 +80,9 @@ public class ComMainController implements Initializable{
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainapp.getPrimaryStage());
-			alert.setTitle("ì˜¤ë¥˜ ë©”ì‹œì§€");
-			alert.setHeaderText("ì„ íƒ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
-			alert.setContentText("ìˆ˜ì •í•  í•™ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+			alert.setTitle("¿À·ù ¸Ş½ÃÁö");
+			alert.setHeaderText("¼±ÅÃ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			alert.setContentText("¼öÁ¤ÇÒ ÇĞ»ıÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 			alert.showAndWait();
 		}
 	}
@@ -93,9 +95,9 @@ public class ComMainController implements Initializable{
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainapp.getPrimaryStage());
-			alert.setTitle("ì˜¤ë¥˜ ë©”ì‹œì§€");
-			alert.setHeaderText("ì„ íƒ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
-			alert.setContentText("ì‚­ì œí•  í•™ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+			alert.setTitle("¿À·ù ¸Ş½ÃÁö");
+			alert.setHeaderText("¼±ÅÃ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			alert.setContentText("»èÁ¦ÇÒ ÇĞ»ıÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 			alert.showAndWait();
 		}
 		

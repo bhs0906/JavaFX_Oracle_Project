@@ -43,8 +43,8 @@ public class ComponentDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				Component component = new Component(rs.getString("COMPONENT_NAME"), rs.getInt("COMPONENT_GUK"), 
-						rs.getInt("COMPONENT_ENG"), rs.getInt("COMPONENT_MATH"), rs.getInt("COMPONENT_TOTAL"), rs.getInt("COMPONENT_AVG"), rs.getInt("COMPONENT_RANK"));
+				Component component = new Component(rs.getString("NAME"), rs.getInt("KOR"), 
+						rs.getInt("ENG"), rs.getInt("MATH"), rs.getInt("SCI"), rs.getInt("TOTAL"), rs.getDouble("AVG"), rs.getString("GRADE"));
 				componentList.add(component);
 			}
 			
@@ -90,8 +90,8 @@ public class ComponentDAO {
 			
 			System.out.println(componentList.size());
 			String SQL = "INSERT INTO component_stock1";
-			SQL += "(COMPONENT_NAME, COMPONENT_GUK, COMPONENT_ENG, COMPONENT_MATH)";
-			SQL += " VALUES(?,?,?,?)";
+			SQL += "(NAME, KOR, ENG, MATH, SCI, TOTAL, AVG, GRADE)";
+			SQL += " VALUES(?,?,?,?,?,?,?,?)";
 				
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			for (Component component : componentList) {
@@ -99,18 +99,20 @@ public class ComponentDAO {
 			int guk = component.getComponentguk();
 			int eng = component.getComponenteng();
 			int math = component.getComponentmath();
+			int sci = component.getComponentsci();
 			int total = component.getComponenttotal();
-			int avg = component.getComponentavg();
-			int rank = component.getComponentrank();
+			double avg = component.getComponentavg();
+			String rank = component.getComponentrank();
 			
 				
 			pstmt.setString(1, name);
 			pstmt.setInt(2, guk);
 			pstmt.setInt(3, eng);
 			pstmt.setInt(4, math);
-			pstmt.setInt(5, total);
-			pstmt.setInt(6, avg);
-			pstmt.setInt(7, rank);
+			pstmt.setInt(5, sci);
+			pstmt.setInt(6, total);
+			pstmt.setDouble(7, avg);
+			pstmt.setString(8, rank);
 			
 			pstmt.executeUpdate();
 			

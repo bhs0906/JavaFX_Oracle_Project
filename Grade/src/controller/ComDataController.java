@@ -19,6 +19,7 @@ public class ComDataController {
 	@FXML private TextField cgukField;
 	@FXML private TextField cengField;
 	@FXML private TextField cmathField;
+	@FXML private TextField csciField;
 	@FXML private Button btn1;
 	
 	@FXML
@@ -28,6 +29,7 @@ public class ComDataController {
 			component.setComponentguk(Integer.valueOf(cgukField.getText()));
 			component.setComponenteng(Integer.valueOf(cengField.getText()));
 			component.setComponentmath(Integer.valueOf(cmathField.getText()));
+			component.setComponentsci(Integer.valueOf(csciField.getText()));
 			component.setComponenttotal();
 			component.setComponentavg();
 			component.setComponentrank();
@@ -44,24 +46,27 @@ public class ComDataController {
 	private boolean valid() {
 		String errorMessge = "";
 		if( cnameField.getText() == null || cnameField.getText().equals("")) {
-			errorMessge += "ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”. \n";
+			errorMessge += "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä. \n";
 		}
 		if( cgukField.getText() == null || cgukField.getText().equals("")) {
-			errorMessge += "êµ­ì–´ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
+			errorMessge += "±¹¾î Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
 		}
 		if( cengField.getText() == null || cengField.getText().equals("")) {
-			errorMessge += "ì˜ì–´ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
+			errorMessge += "¿µ¾î Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
 		}
 		if( cmathField.getText() == null || cmathField.getText().equals("")) {
-			errorMessge += "ìˆ˜í•™ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
+			errorMessge += "¼öÇĞ Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
+		}
+		if( csciField.getText() == null || csciField.getText().equals("")) {
+			errorMessge += "°úÇĞ Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
 		}
 		if( errorMessge.equals("")) {
 			return true;
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(dialogStage);
-			alert.setTitle("ì˜¤ë¥˜ ë©”ì‹œì§€");
-			alert.setHeaderText("ê°’ì„ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”.");
+			alert.setTitle("¿À·ù ¸Ş½ÃÁö");
+			alert.setHeaderText("°ªÀ» Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä.");
 			alert.setContentText(errorMessge);
 			alert.showAndWait();
 			return false;
@@ -77,6 +82,7 @@ public class ComDataController {
 		cgukField.setText(String.valueOf(component.getComponentguk()));
 		cengField.setText(String.valueOf(component.getComponenteng()));
 		cmathField.setText(String.valueOf(component.getComponentmath()));
+		csciField.setText(String.valueOf(component.getComponentsci()));
 
 	}
 
