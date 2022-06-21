@@ -35,6 +35,7 @@
                   <Button fx:id="btn1" layoutX="180.0" layoutY="7.0" mnemonicParsing="false" onAction="#addAction" text="추가" />
                   <Button fx:id="btn2" layoutX="250.0" layoutY="7.0" mnemonicParsing="false" onAction="#editAction" text="수정" />
                   <Button fx:id="btn2" layoutX="320.0" layoutY="7.0" mnemonicParsing="false" onAction="#deleteActiono" text="삭제" />
+                  <Button layoutX="390.0" layoutY="7.0" mnemonicParsing="false" onAction="#searchAction" text="검색" />
                </children>
             </AnchorPane>
         </items>

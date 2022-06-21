@@ -12,10 +12,6 @@ import javafx.collections.ObservableList;
 
 public class ComponentDAO {
 
-	private static final int COMPONENT_ENG = 0;
-	private static final int COMPONENT_GUK = 0;
-	private static final int COMPONENT_MATH = 0;
-	private static String COMPONENT_total;
 	private static Connection conn;
 	private static ResultSet rs;
 
@@ -31,6 +27,31 @@ public class ComponentDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	}
+	
+	public String searchInfo(String name) {
+		String SQL = "SELECT * FROM component_stock1";
+		String info="";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			int cnt=0;
+			while(rs.next()) {
+				if(rs.getString("NAME").equals(name)) {
+					info = "이름 : " +rs.getString("NAME") +"\n국어 : " + rs.getInt("KOR")+"점   영어 : "+ 
+							rs.getInt("ENG")+"점   수학 : " + rs.getInt("MATH") + "점   과학 : "+ rs.getInt("SCI") +"점\n총합 : "+ rs.getInt("TOTAL")+"  평균 : "+
+							rs.getDouble("AVG") +"  등급: "+ rs.getString("GRADE");
+					cnt++;
+				}
+			}
+			if(cnt==0) {
+				info = "그런 학생은 없습니다.";
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return info;
 	}
 	
 	public ObservableList<Component> getComponentList(){

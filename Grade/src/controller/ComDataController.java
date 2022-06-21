@@ -46,27 +46,27 @@ public class ComDataController {
 	private boolean valid() {
 		String errorMessge = "";
 		if( cnameField.getText() == null || cnameField.getText().equals("")) {
-			errorMessge += "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä. \n";
+			errorMessge += "ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”. \n";
 		}
 		if( cgukField.getText() == null || cgukField.getText().equals("")) {
-			errorMessge += "±¹¾î Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
+			errorMessge += "êµ­ì–´ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
 		}
 		if( cengField.getText() == null || cengField.getText().equals("")) {
-			errorMessge += "¿µ¾î Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
+			errorMessge += "ì˜ì–´ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
 		}
 		if( cmathField.getText() == null || cmathField.getText().equals("")) {
-			errorMessge += "¼öÇĞ Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
+			errorMessge += "ìˆ˜í•™ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
 		}
 		if( csciField.getText() == null || csciField.getText().equals("")) {
-			errorMessge += "°úÇĞ Á¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. \n";
+			errorMessge += "ê³¼í•™ ì ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. \n";
 		}
 		if( errorMessge.equals("")) {
 			return true;
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(dialogStage);
-			alert.setTitle("¿À·ù ¸Ş½ÃÁö");
-			alert.setHeaderText("°ªÀ» Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä.");
+			alert.setTitle("ì˜¤ë¥˜ ë©”ì‹œì§€");
+			alert.setHeaderText("ê°’ì„ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”.");
 			alert.setContentText(errorMessge);
 			alert.showAndWait();
 			return false;

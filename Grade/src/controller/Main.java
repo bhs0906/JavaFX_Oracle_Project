@@ -104,7 +104,7 @@ public class Main extends Application {
 			AnchorPane page =  (AnchorPane) loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("ÇĞ»ı Á¡¼ö Ãß°¡");
+			dialogStage.setTitle("ï¿½Ğ»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
@@ -120,28 +120,51 @@ public class Main extends Application {
 			// TODO: handle exception
 			e.printStackTrace();
 			return 0;
+		}	
+	}
+	
+	public void setSearchView() {
+		try {
+			FXMLLoader loader =  new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/view/SearchView.fxml"));
+			AnchorPane page =  (AnchorPane) loader.load();
+			
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("í•™ìƒ ê²€ìƒ‰");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			
+			
+			ComSearchController controller = (ComSearchController) loader.getController();
+			controller.setDialogStage(dialogStage);
+			
+			
+			dialogStage.showAndWait();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		
 	}
 	
 	@FXML
 	public void saveAction() {
 		ComponentDAO componentDAO = new ComponentDAO();
-		System.out.println(componentList); //¹®Á¦Á¡ ¸®½ºÆ®¿¡ °ªÀÌ ¾øÀ½
+		System.out.println(componentList); //ë¬¸ì œì  ë¦¬ìŠ¤íŠ¸ì— ê°’ì´ ì—†ìŒ
 		int result = componentDAO.saveComponentList(componentList);
 		if( result == 1) {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.initOwner(primaryStage);
-			alert.setTitle("¼º°ø ¸Ş½ÃÁö");
-			alert.setHeaderText("¼º°øÀûÀ¸·Î ¼öÇàÇß½À´Ï´Ù.");
-			alert.setContentText("Å×ÀÌÅÍº£ÀÌ½º¿¡ ¼º°øÀûÀ¸·Î Á¢±ÙÇß½À´Ï´Ù.");
+			alert.setTitle("ì„±ê³µ ë©”ì‹œì§€");
+			alert.setHeaderText("ì„±ê³µì ìœ¼ë¡œ ìˆ˜í–‰í–ˆìŠµë‹ˆë‹¤.");
+			alert.setContentText("í…Œì´í„°ë² ì´ìŠ¤ì— ì„±ê³µì ìœ¼ë¡œ ì ‘ê·¼í–ˆìŠµë‹ˆë‹¤.");
 			alert.showAndWait();
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(primaryStage);
-			alert.setTitle("¿À·ù ¸Ş½ÃÁö");
-			alert.setHeaderText("¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
-			alert.setContentText("Å×ÀÌÅÍº£ÀÌ½º¿¡ ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+			alert.setTitle("ì˜¤ë¥˜ ë©”ì‹œì§€");
+			alert.setHeaderText("ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
+			alert.setContentText("í…Œì´í„°ë² ì´ìŠ¤ì— ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
 			alert.showAndWait();
 		}
 	}
@@ -155,7 +178,7 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("/view/BarChartView.fxml"));
 			AnchorPane page =  (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("À§Ä¡º° ºÎ¹® ¼ö·®");
+			dialogStage.setTitle("ìœ„ì¹˜ë³„ ë¶€ë¬¸ ìˆ˜ëŸ‰");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
@@ -176,11 +199,11 @@ public class Main extends Application {
 	@FXML
 	public void aboutAction() {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("¾Ë¾Æº¸±â");
-		alert.setHeaderText("<ÇÁ·Î±×·¥ Á¤º¸>");
-		alert.setContentText("ÇÁ·Î±×·¥ ¹öÀü : 1.0 Ver \n" +
-		"ÇÁ·Î±×·¥ °³¹ßÀÚ : ezen \n" +
-		"ÇÁ·Î±×·¥ ¼³¸í : ÀÚ¹ÙFX DBÇÁ·Î±×·¥ °úÁ¦");
+		alert.setTitle("ì•Œì•„ë³´ê¸°");
+		alert.setHeaderText("<í”„ë¡œê·¸ë¨ ì •ë³´>");
+		alert.setContentText("í”„ë¡œê·¸ë¨ ë²„ì „ : 1.0 Ver \n" +
+				"í”„ë¡œê·¸ë¨ ê°œë°œì : ezen \n" +
+				"í”„ë¡œê·¸ë¨ ì„¤ëª… : ìë°”FX DBí”„ë¡œê·¸ë¨ ê³¼ì œ");
 		alert.showAndWait();
 	}
 	
