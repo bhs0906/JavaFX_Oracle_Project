@@ -25,7 +25,7 @@
                         <TableColumn fx:id="Comsci" prefWidth="75.0" text="과학" />
                         <TableColumn fx:id="Comtotal" prefWidth="75.0" text="합계" />
                         <TableColumn fx:id="Comavg" prefWidth="75.0" text="평균" />
-                        <TableColumn fx:id="Comrank" prefWidth="75.0" text="등수" />
+                        <TableColumn fx:id="Comrank" prefWidth="75.0" text="등급" />
                     </columns>
                   </TableView>
                </children>

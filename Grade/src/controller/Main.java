@@ -104,7 +104,7 @@ public class Main extends Application {
 			AnchorPane page =  (AnchorPane) loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("�л� ���� �߰�");
+			dialogStage.setTitle("추가 정보");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
