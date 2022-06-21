@@ -80,9 +80,9 @@ public class ComMainController implements Initializable{
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainapp.getPrimaryStage());
-			alert.setTitle("���� �޽���");
-			alert.setHeaderText("���� ������ �߻��߽��ϴ�.");
-			alert.setContentText("������ �л��� �������ּ���.");
+			alert.setTitle("오류 메시지");
+			alert.setHeaderText("선택 오류가 발생했습니다.");
+			alert.setContentText("수정할 학생을 선택해주세요.");
 			alert.showAndWait();
 		}
 	}
@@ -95,9 +95,9 @@ public class ComMainController implements Initializable{
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainapp.getPrimaryStage());
-			alert.setTitle("���� �޽���");
-			alert.setHeaderText("���� ������ �߻��߽��ϴ�.");
-			alert.setContentText("������ �л��� �������ּ���.");
+			alert.setTitle("오류 메시지");
+			alert.setHeaderText("선택 오류가 발생했습니다.");
+			alert.setContentText("삭제할 학생을 선택해주세요.");
 			alert.showAndWait();
 		}	
 	}
