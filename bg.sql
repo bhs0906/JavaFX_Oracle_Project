@@ -12,3 +12,6 @@ GRADE varchar2(20)
 SELECT * FROM component_stock1;
 
 drop table component_stock1;
+
+DELETE from component_stock1 where name='aaa';
+
