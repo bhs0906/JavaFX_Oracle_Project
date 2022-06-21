@@ -660,3 +660,101 @@ java.io.FileNotFoundException: D:\lkw_data\project2\.metadata\.plugins\org.eclip
 	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2333)
 	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:509)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-06-21 17:29:33.776
+!MESSAGE Problems occurred refreshing the selected resources.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2022-06-21 17:29:33.776
+!MESSAGE The project description file (.project) for 'Grade' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for 'Grade' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.Project.updateDescription(Project.java:1346)
+	at org.eclipse.core.internal.resources.File.updateMetadataFiles(File.java:376)
+	at org.eclipse.core.internal.localstore.RefreshLocalVisitor.visit(RefreshLocalVisitor.java:291)
+	at org.eclipse.core.internal.localstore.UnifiedTree.accept(UnifiedTree.java:119)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:978)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:961)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshRoot(FileSystemResourceManager.java:1003)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:954)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1557)
+	at org.eclipse.ui.actions.RefreshAction.refreshResource(RefreshAction.java:274)
+	at org.eclipse.ui.actions.RefreshAction$2.execute(RefreshAction.java:234)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.lambda$0(WorkspaceModifyOperation.java:110)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.run(WorkspaceModifyOperation.java:131)
+	at org.eclipse.jdt.ui.actions.RefreshAction$WrappedWorkbenchRefreshAction.run(RefreshAction.java:112)
+	at org.eclipse.jdt.ui.actions.RefreshAction.performRefresh(RefreshAction.java:178)
+	at org.eclipse.jdt.ui.actions.RefreshAction.lambda$0(RefreshAction.java:169)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:41)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5901)
+	at org.eclipse.jdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:108)
+	at org.eclipse.jdt.internal.ui.actions.WorkbenchRunnableAdapter$1.run(WorkbenchRunnableAdapter.java:121)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.wst.xml.ui 4 4 2022-06-21 17:31:26.610
+!MESSAGE Cannot invoke "String.lastIndexOf(int)" because "name" is null
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "String.lastIndexOf(int)" because "name" is null
+	at org.eclipse.jdt.internal.core.NameLookup.findType(NameLookup.java:1064)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1660)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1746)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1646)
+	at org.eclipse.fx.ide.model.internal.FXCtrlEventMethod.isEventMethod(FXCtrlEventMethod.java:90)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getLocalEventMethods(FXCtrlClass.java:117)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getAllEventMethods(FXCtrlClass.java:93)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getAllEventMethods(FXCtrlClass.java:91)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getAllEventMethods(FXCtrlClass.java:91)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.checkControllerAttributes(FXMLValidator.java:189)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validate(FXMLValidator.java:123)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validateV1File(FXMLValidator.java:388)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validate(FXMLValidator.java:333)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.validate(ReconcileStepForValidator.java:252)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.reconcileModel(ReconcileStepForValidator.java:210)
+	at org.eclipse.jface.text.reconciler.AbstractReconcileStep.reconcile(AbstractReconcileStep.java:92)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ValidatorStrategy.reconcile(ValidatorStrategy.java:270)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DocumentRegionProcessor.process(DocumentRegionProcessor.java:323)
+	at org.eclipse.wst.sse.ui.internal.reconcile.StructuredRegionProcessor.process(StructuredRegionProcessor.java:260)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DirtyRegionProcessor$BackgroundThread.run(DirtyRegionProcessor.java:694)
+
+!ENTRY org.eclipse.wst.xml.ui 4 4 2022-06-21 17:32:42.677
+!MESSAGE Cannot invoke "String.lastIndexOf(int)" because "name" is null
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "String.lastIndexOf(int)" because "name" is null
+	at org.eclipse.jdt.internal.core.NameLookup.findType(NameLookup.java:1064)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1660)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1746)
+	at org.eclipse.jdt.internal.core.JavaProject.findType(JavaProject.java:1646)
+	at org.eclipse.fx.ide.model.internal.FXCtrlEventMethod.isEventMethod(FXCtrlEventMethod.java:90)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getLocalEventMethods(FXCtrlClass.java:117)
+	at org.eclipse.fx.ide.model.internal.FXCtrlClass.getAllEventMethods(FXCtrlClass.java:93)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.checkControllerAttributes(FXMLValidator.java:189)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validate(FXMLValidator.java:123)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validateV1File(FXMLValidator.java:388)
+	at org.eclipse.fx.ide.fxml.editors.FXMLValidator.validate(FXMLValidator.java:333)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.validate(ReconcileStepForValidator.java:252)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.reconcileModel(ReconcileStepForValidator.java:210)
+	at org.eclipse.jface.text.reconciler.AbstractReconcileStep.reconcile(AbstractReconcileStep.java:92)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ValidatorStrategy.reconcile(ValidatorStrategy.java:270)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DocumentRegionProcessor.process(DocumentRegionProcessor.java:323)
+	at org.eclipse.wst.sse.ui.internal.reconcile.StructuredRegionProcessor.process(StructuredRegionProcessor.java:260)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DirtyRegionProcessor$BackgroundThread.run(DirtyRegionProcessor.java:694)
+
+!ENTRY org.eclipse.core.jobs 4 2 2022-06-21 17:34:33.854
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.NumberFormatException: null
+	at java.base/java.lang.Integer.parseInt(Integer.java:614)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1586)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

@@ -169,32 +169,31 @@ public class Main extends Application {
 		}
 	}
 	
-	@FXML
-	public void locationChart() {
-		
-		try {
-			
-			FXMLLoader loader =  new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/view/BarChartView.fxml"));
-			AnchorPane page =  (AnchorPane) loader.load();
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("위치별 부문 수량");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-			
-			BarChartController controller = loader.getController();
-			controller.setComponentList(componentList);
-			
-			dialogStage.show();
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-
-	}
+//	@FXML
+//	public void locationChart() {
+//		
+//		try {
+//			
+//			FXMLLoader loader =  new FXMLLoader();
+//			loader.setLocation(Main.class.getResource("/view/BarChartView.fxml"));
+//			AnchorPane page =  (AnchorPane) loader.load();
+//			Stage dialogStage = new Stage();
+//			dialogStage.setTitle("위치별 부문 수량");
+//			dialogStage.initModality(Modality.WINDOW_MODAL);
+//			dialogStage.initOwner(primaryStage);
+//			Scene scene = new Scene(page);
+//			dialogStage.setScene(scene);
+//			
+//			
+//			
+//			dialogStage.show();
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+//
+//	}
 	
 	@FXML
 	public void aboutAction() {
