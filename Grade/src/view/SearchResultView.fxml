@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchResultController">
+   <children>
+      <SplitPane dividerPositions="0.8620689655172413" orientation="VERTICAL" prefHeight="350.0" prefWidth="600.0">
+        <items>
+          <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="598.0">
+               <children>
+                  <TableView fx:id="resultTable" prefHeight="305.0" prefWidth="600.0">
+                    <columns>
+                      <TableColumn fx:id="resName" prefWidth="75.0" text="이름" />
+                      <TableColumn fx:id="resKor" prefWidth="75.0" text="국어" />
+                        <TableColumn fx:id="resEng" prefWidth="75.0" text="영어" />
+                        <TableColumn fx:id="resMath" prefWidth="75.0" text="수학" />
+                        <TableColumn fx:id="resSci" prefWidth="75.0" text="과학" />
+                        <TableColumn fx:id="resTotal" prefWidth="75.0" text="합계" />
+                        <TableColumn fx:id="resAvg" prefWidth="75.0" text="평균" />
+                        <TableColumn fx:id="resRank" prefWidth="75.0" text="등급" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Button layoutX="267.0" layoutY="5.0" mnemonicParsing="false" onAction="#backAction" text="목록으로" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -10,7 +10,7 @@ import model.ComponentDAO;
 
 public class ComSearchController {
 	private Stage dialogStage;
-	
+	private String grade = "";
 	@FXML private TextField searchField;
 	
 	
@@ -18,19 +18,17 @@ public class ComSearchController {
 	@FXML 
 	public void searchAction2() {
 		ComponentDAO componentDAO = new ComponentDAO();
-		String info="";
+		String searchG = searchField.getText();
 		if(valid()) {
-			info = componentDAO.searchInfo(searchField.getText());
+			if(componentDAO.searchInfo(searchG)>0) grade = searchG;
 		}
-		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("검색 결과");
-		alert.setHeaderText("<검색 정보>");
-		alert.setContentText(info);
-		alert.showAndWait();
 		dialogStage.close();
 	}
 	
+	public String getGrade() {
+		return grade;
+	}
+
 	@FXML 
 	public void cancelAction() {
 		dialogStage.close();
@@ -53,7 +51,6 @@ public class ComSearchController {
 			return false;
 		}
 	}
-	
 	
 	
 	public void setDialogStage(Stage dialogStage) {

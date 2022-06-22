@@ -25,7 +25,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	
 	private static final ObservableList<Component> componentList = FXCollections.observableArrayList();
-
+	private static final ObservableList<Component> searchResultList = FXCollections.observableArrayList();
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -97,6 +97,10 @@ public class Main extends Application {
 		return componentList;
 	}
 	
+	public ObservableList<Component> getSearchResultList(){
+		return searchResultList;
+	}
+	
 	public int setComponentDataView(Component component) {
 		try {
 			FXMLLoader loader =  new FXMLLoader();
@@ -123,14 +127,14 @@ public class Main extends Application {
 		}	
 	}
 	
-	public void setSearchView() {
+	public String setSearchView() {
 		try {
 			FXMLLoader loader =  new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/view/SearchView.fxml"));
 			AnchorPane page =  (AnchorPane) loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("학생 검색");
+			dialogStage.setTitle("등급 검색");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
@@ -139,12 +143,42 @@ public class Main extends Application {
 			
 			ComSearchController controller = (ComSearchController) loader.getController();
 			controller.setDialogStage(dialogStage);
-			
-			
 			dialogStage.showAndWait();
+			return controller.getGrade();
 		}catch(Exception e) {
 			e.printStackTrace();
+			return "";
 		}
+	}
+	
+public void setSearchResultView(String grade) {
+		searchResultList.removeAll(searchResultList);
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../view/SearchResultView.fxml"));
+			AnchorPane searchResultView = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("검색정보");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(searchResultView);
+			dialogStage.setScene(scene);
+
+			SearchResultController controller = loader.getController();
+			controller.setMain(this);
+			
+			ComponentDAO componentDAO = new ComponentDAO();
+			ObservableList<Component> resultList = componentDAO.getResultList(grade);
+			for(int i = 0; i < resultList.size(); i++) {
+				searchResultList.add(resultList.get(i));
+			}
+			controller.setSrStage(dialogStage);
+			dialogStage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@FXML

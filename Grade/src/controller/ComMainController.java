@@ -104,7 +104,9 @@ public class ComMainController implements Initializable{
 	
 	@FXML
 	private void searchAction() {
-		mainapp.setSearchView();
+		String grade = mainapp.setSearchView();
+		mainapp.setSearchResultView(grade);
+		
 	}
 
 }

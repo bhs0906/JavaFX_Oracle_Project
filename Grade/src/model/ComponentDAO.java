@@ -29,29 +29,22 @@ public class ComponentDAO {
 		}
 	}
 	
-	public String searchInfo(String name) {
+	public int searchInfo(String grade) {
 		String SQL = "SELECT * FROM component_stock1";
-		String info="";
+		int cnt=0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
-			int cnt=0;
 			while(rs.next()) {
-				if(rs.getString("NAME").equals(name)) {
-					info = "이름 : " +rs.getString("NAME") +"\n국어 : " + rs.getInt("KOR")+"점   영어 : "+ 
-							rs.getInt("ENG")+"점   수학 : " + rs.getInt("MATH") + "점   과학 : "+ rs.getInt("SCI") +"점\n총합 : "+ rs.getInt("TOTAL")+"  평균 : "+
-							rs.getDouble("AVG") +"  등급: "+ rs.getString("GRADE");
+				if(rs.getString("GRADE").equals(grade)) {
 					cnt++;
 				}
-			}
-			if(cnt==0) {
-				info = "그런 학생은 없습니다.";
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return info;
+		return cnt;
 	}
 	
 	public ObservableList<Component> getComponentList(){
@@ -76,6 +69,30 @@ public class ComponentDAO {
 		}
 		
 		return componentList;
+	}
+
+	public ObservableList<Component> getResultList(String grade){
+		String SQL = "SELECT * FROM component_stock1 WHERE GRADE = ?";
+		ObservableList<Component> resultList = FXCollections.observableArrayList();
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, grade);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Component component = new Component(rs.getString("NAME"), rs.getInt("KOR"), 
+						rs.getInt("ENG"), rs.getInt("MATH"), rs.getInt("SCI"), rs.getInt("TOTAL"), rs.getDouble("AVG"), rs.getString("GRADE"));
+				resultList.add(component);
+			}
+			
+			pstmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return resultList;
 	}
 	
 	public int saveComponentList(ObservableList<Component> componentList) {
