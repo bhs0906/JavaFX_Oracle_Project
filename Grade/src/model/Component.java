@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Component {
+public class Component { // 성적 출력에 필요한 변수들
 
 	private final StringProperty componentName;
 	private final IntegerProperty componentguk;
@@ -80,7 +80,7 @@ public class Component {
 	
 	
 	public void setComponentavg() {
-		this.componentavg.set(componenttotal.get()/4);
+		this.componentavg.set((double)(componenttotal.get())/4);
 	}
 	
 	

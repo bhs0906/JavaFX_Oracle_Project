@@ -19,35 +19,35 @@ public class ComponentDAO {
 	public void setMain(Main main) {
 	}
 	
-	public ComponentDAO() {
+	public ComponentDAO() { //ComponentDAO가 생성되면 생성자가 호출되어 DB에 연결
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","bg","bg");
-		} catch (Exception e) {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","pg","1234");
+		} catch (Exception e) {                                                    //접속이름 비밀번호
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 	
-	public int searchInfo(String grade) {
+	public int searchInfo(String grade) { 
 		String SQL = "SELECT * FROM component_stock1";
 		int cnt=0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				if(rs.getString("GRADE").equals(grade)) {
-					cnt++;
+				if(rs.getString("GRADE").equals(grade)) { //DB에 있는 데이터에서 입력한 등급과 같은 등급이 있는지 확인 후 
+					cnt++;                                //횟수를 카운트한다. 
 				}
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return cnt;
+		return cnt; //카운트한 횟수 반환
 	}
 	
-	public ObservableList<Component> getComponentList(){
+	public ObservableList<Component> getComponentList(){ //DB에 있는 테이블의 전체 데이터를 넣어서 반환해주는 함수
 		
 		String SQL = "SELECT * FROM component_stock1";
 		ObservableList<Component> componentList = FXCollections.observableArrayList();
@@ -72,7 +72,7 @@ public class ComponentDAO {
 	}
 
 	public ObservableList<Component> getResultList(String grade){
-		String SQL = "SELECT * FROM component_stock1 WHERE GRADE = ?";
+		String SQL = "SELECT * FROM component_stock1 WHERE GRADE = ?"; //WHERE 조건문으로 입력한 등급과 같은 등급의 데이터만 나오게해줌
 		ObservableList<Component> resultList = FXCollections.observableArrayList();
 		
 		try {
@@ -83,7 +83,7 @@ public class ComponentDAO {
 			while (rs.next()) {
 				Component component = new Component(rs.getString("NAME"), rs.getInt("KOR"), 
 						rs.getInt("ENG"), rs.getInt("MATH"), rs.getInt("SCI"), rs.getInt("TOTAL"), rs.getDouble("AVG"), rs.getString("GRADE"));
-				resultList.add(component);
+				resultList.add(component); 
 			}
 			
 			pstmt.close();
@@ -92,7 +92,7 @@ public class ComponentDAO {
 			e.printStackTrace();
 		}
 		
-		return resultList;
+		return resultList; 
 	}
 	
 	public int saveComponentList(ObservableList<Component> componentList) {
@@ -108,7 +108,6 @@ public class ComponentDAO {
 	int deleteComponentList() {
 
 		try {
-			
 			String SQL = "DELETE FROM component_stock1";
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.executeQuery();

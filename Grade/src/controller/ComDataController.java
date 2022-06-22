@@ -20,11 +20,10 @@ public class ComDataController {
 	@FXML private TextField cengField;
 	@FXML private TextField cmathField;
 	@FXML private TextField csciField;
-	@FXML private Button btn1;
 	
 	@FXML
-	private void confirmAction() {
-		if(valid()) {
+	private void confirmAction() { // 확인 버튼 누를 시
+		if(valid()) { // 형식에 맞게 잘 적었으면 component에 값을 세팅해준다.
 			component.setComponentName(cnameField.getText());
 			component.setComponentguk(Integer.valueOf(cgukField.getText()));
 			component.setComponenteng(Integer.valueOf(cengField.getText()));
@@ -39,11 +38,11 @@ public class ComDataController {
 	}
 	
 	@FXML
-	private void censerAction() {
+	private void censerAction() {// 취소 버튼 누를 시 
 		dialogStage.close();
 	}
 	
-	private boolean valid() {
+	private boolean valid() { //입력창에 아무것도 적지 않을 경우 메세지를 추가해서 오류창을 출력
 		String errorMessge = "";
 		if( cnameField.getText() == null || cnameField.getText().equals("")) {
 			errorMessge += "이름을 입력하세요. \n";

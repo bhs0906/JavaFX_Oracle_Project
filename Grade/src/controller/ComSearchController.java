@@ -16,7 +16,7 @@ public class ComSearchController {
 	
 	
 	@FXML 
-	public void searchAction2() {
+	public void searchAction2() { //검색버튼을 누를 시 
 		ComponentDAO componentDAO = new ComponentDAO();
 		String searchG = searchField.getText();
 		if(valid()) {
@@ -34,10 +34,11 @@ public class ComSearchController {
 		dialogStage.close();
 	}
 	
-	private boolean valid() {
+	private boolean valid() { //입력창에 아무것도 입력하지않으면 오류메세지를 출력해주는 함수
 		String errorMessge = "";
+		
 		if( searchField.getText() == null || searchField.getText().equals("")) {
-			errorMessge += "이름을 적으세요. \n";
+			errorMessge += "등급을 적으세요. \n";
 		}
 		if( errorMessge.equals("")) {
 			return true;
