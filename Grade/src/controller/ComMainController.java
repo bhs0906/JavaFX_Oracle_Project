@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -74,6 +75,13 @@ public class ComMainController implements Initializable{
 		Component component = componentTable.getSelectionModel().getSelectedItem(); //테이블에서 선택한 값을 component에 넣어줌 
 		if ( component != null ) { //테이블뷰에서 선택한 사항이 있는지 확인하고 선택했다면 선택한 데이터를 들고 추가기능과 똑같은 창을 띄움
 			mainapp.setComponentDataView(component); //추가와 수정은 기능은 동일 하나 들고 가는 데이터가 다름
+			ObservableList<Component> editList = mainapp.getComponentList();
+			for(int i=0;i<editList.size();i++) {
+				if(component==editList.get(i)) {//실시간으로 테이블 뷰 수정
+					editList.remove(i);
+					editList.add(component);
+				}
+			}
 		}
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
