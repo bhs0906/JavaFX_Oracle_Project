@@ -77,9 +77,10 @@ public class ComMainController implements Initializable{
 			mainapp.setComponentDataView(component); //추가와 수정은 기능은 동일 하나 들고 가는 데이터가 다름
 			ObservableList<Component> editList = mainapp.getComponentList();
 			for(int i=0;i<editList.size();i++) {
-				if(component==editList.get(i)) {//실시간으로 테이블 뷰 수정
-					editList.remove(i);
-					editList.add(component);
+				if(component.getComponentName().equals(editList.get(i).getComponentName())) {//실시간으로 테이블 뷰 수정
+//					editList.remove(i);
+//					editList.add(component);
+					editList.set(i, component);
 				}
 			}
 		}

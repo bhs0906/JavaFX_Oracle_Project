@@ -37,6 +37,7 @@ public class Main extends Application {
 			setComMainView();
 			
 		} catch(Exception e) {
+			
 			e.printStackTrace();
 		}
 	}
